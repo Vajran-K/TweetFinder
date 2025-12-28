@@ -1,0 +1,16 @@
+# Maven
+target/
+
+# Runtime files
+lastSeen.txt
+
+# Secrets
+src/main/resources/application.properties
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db

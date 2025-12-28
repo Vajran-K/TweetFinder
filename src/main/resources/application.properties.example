@@ -1,0 +1,12 @@
+rss.url=xxxxxxxxxx
+
+# Email
+mail.from=xxxx@gmail.com
+mail.to=xxxx@gmail.com
+mail.password=xxxxx
+
+# SMTP
+mail.smtp.host=smtp.gmail.com
+mail.smtp.port=587
+mail.smtp.auth=true
+mail.smtp.starttls.enable=true
