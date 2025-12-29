@@ -1,9 +1,9 @@
 package com.example;
 
 public class App {
-    public static void main(String[] args) throws Exception {
-        
-        String tweetURL  = "https://rss.app/feeds/rm0TjdzvVYRfbzbD.xml";
+
+    public static void runScan(){
+        String tweetURL  = ConfigLoader.get("rss.url");
 
         String lastSeen =  StateManager.getLastSeen();
         String latestTweet = FeedReader.getLatestTweetLink(tweetURL);
@@ -18,5 +18,8 @@ public class App {
         }else{
             System.out.println("No new tweet detected.");
         }
+    }
+    public static void main(String[] args){
+        runScan();
     }
 }
