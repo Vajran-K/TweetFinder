@@ -2,7 +2,7 @@ package com.example;
 
 public class App {
 
-    public static void runScan(){
+    public static boolean runScan(){
         String tweetURL  = ConfigLoader.get("rss.url");
 
         String lastSeen =  StateManager.getLastSeen();
@@ -14,10 +14,9 @@ public class App {
             "Latest tweet: " + latestTweet);
 
             StateManager.updateLastSeen(latestTweet);
-            System.out.println("New tweet detected and email sent.");
-        }else{
-            System.out.println("No new tweet detected.");
+            return true;
         }
+        return false;
     }
     public static void main(String[] args){
         runScan();
