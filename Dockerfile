@@ -8,7 +8,7 @@ WORKDIR /app
 COPY . .
 
 # Build the project
-RUN ./mvnw clean package
+RUN .\mvnw clean package
 
 # Expose Render port
 EXPOSE 8080
