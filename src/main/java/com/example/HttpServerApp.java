@@ -16,6 +16,13 @@ public class HttpServerApp {
             new InetSocketAddress("0.0.0.0", port), 0
         );
 
+        server.createContext("/health", exchange -> {
+            String response = "OK";
+            exchange.sendResponseHeaders(200, response.length());
+            exchange.getResponseBody().write(response.getBytes());
+            exchange.getResponseBody().close();
+   });
+
         server.createContext("/scan", exchange -> {
 
             String response;
