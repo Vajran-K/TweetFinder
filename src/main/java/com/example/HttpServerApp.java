@@ -25,27 +25,10 @@ public class HttpServerApp {
         });
 
         server.createContext("/scan", exchange -> {
-            String response = "scan reached";
-
-            try {
-                System.out.println("SCAN endpoint hit");
-
-                boolean result = App.runScan();
-                response = result
-                        ? "New update found. Email sent."
-                        : "No new updates.";
-
-            } catch (Exception e) {
-                e.printStackTrace();
-                response = "ERROR: " + e.toString();
-            }
+            String response = "SCAN ENDPOINT WORKS";
 
             byte[] bytes = response.getBytes(StandardCharsets.UTF_8);
-
-            exchange.getResponseHeaders().set("Content-Type", "text/plain; charset=utf-8");
-            exchange.getResponseHeaders().set("Access-Control-Allow-Origin", "*");
             exchange.sendResponseHeaders(200, bytes.length);
-
             try (OutputStream os = exchange.getResponseBody()) {
                 os.write(bytes);
             }
