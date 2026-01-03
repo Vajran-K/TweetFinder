@@ -1,7 +1,7 @@
 const scanBtn = document.getElementById("scanBtn");
 const resultBox = document.getElementById("result");
 
-const BACKEND_URL = "http://localhost:8080/scan";
+const BACKEND_URL = "https://tweetfind.onrender.com/scan";
 
 scanBtn.addEventListener("click", async () => {
   resultBox.innerText = "Scanning RSS feed...";
