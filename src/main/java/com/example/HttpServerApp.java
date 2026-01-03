@@ -25,13 +25,25 @@ public class HttpServerApp {
         });
 
         server.createContext("/scan", exchange -> {
-            String response = "SCAN ENDPOINT WORKS";
+            String response = "Scan triggered";
 
             byte[] bytes = response.getBytes(StandardCharsets.UTF_8);
+            exchange.getResponseHeaders().set("Content-Type", "text/plain");
+            exchange.getResponseHeaders().set("Access-Control-Allow-Origin", "*");
             exchange.sendResponseHeaders(200, bytes.length);
+
             try (OutputStream os = exchange.getResponseBody()) {
                 os.write(bytes);
             }
+
+            // Run heavy work asynchronously
+            new Thread(() -> {
+                try {
+                    App.runScan();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }).start();
         });
 
         server.start();
